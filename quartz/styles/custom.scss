@@ -1,3 +1,161 @@
-@use "./variables.scss" as *;
+/* ==========================================================================
+   ФИНАЛЬНЫЙ АБСОЛЮТНЫЙ CSS-ФИЛЬТР ДЛЯ VSCI LABORATORY
+   ========================================================================== */
 
-// put your custom CSS here!
+/* 1. ОЧИСТКА И ПОРЯДОК БОКОВОГО МЕНЮ (EXPLORER) */
+.explorer li.file, .explorer .file, [class*="explorer"] li.file, .explorer .folder-container .file, .explorer-item:not(.folder), .explorer li:not(.folder) {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+}
+.explorer li:has(a[href*="about"]), .explorer li:has(a[href*="concepts"]) {
+  display: list-item !important;
+  visibility: visible !important;
+  height: auto !important;
+}
+[class*="explorer"] ul, .explorer ul { display: flex !important; flex-direction: column !important; }
+[class*="explorer"] li:has(a[href="/"]), .explorer li:has(a[href="/"]) { order: 1 !important; }
+[class*="explorer"] li:has(a[href*="concepts"]), .explorer li:has(a[href*="concepts"]) { order: 2 !important; }
+[class*="explorer"] li:has(a[href*="about"]), .explorer li:has(a[href*="about"]) { order: 3 !important; }
+.explorer a, .explorer span { white-space: normal !important; word-break: break-word !important; }
+
+
+/* 2. АБСОЛЮТНЫЙ СДВИГ СПИСКА СТАТЕЙ В САМЫЙ ВНИЗ СТРАНИЦЫ */
+/* Делаем главный контейнер статьи базой для отсчета координат */
+body[data-slug="index"] .center, 
+body[data-slug="index"] main {
+  position: relative !important;
+  display: block !important;
+  padding-bottom: 250px !important; /* Освобождаем гигантское пустое место внизу ПОД текстом */
+}
+
+/* Вырываем список RECENT NOTES из верха страницы и силой сажаем в созданное внизу пустое место */
+body[data-slug="index"] .recent-notes,
+body[data-slug="index"] [class*="recent-notes"] {
+  display: block !important;
+  position: absolute !important;
+  bottom: 80px !important; /* Садится идеально в самый низ под фразу Recent Analysis */
+  left: 0 !important;
+  width: 100% !important;
+}
+
+
+/* 3. ТОТАЛЬНОЕ УНИЧТОЖЕНИЕ СИСТЕМНОЙ ГРЯЗИ, ТЕГОВ И СТАРЫХ ДАТ НА ГЛАВНОЙ */
+/* Намертво стираем сырые теги, ошибки Not Found, тег индвекс_vsci и время чтения */
+.frontmatter, .yaml-frontmatter, .properties, .tag-list, .tags, [class*="tags"], .err, #vsci-final-stream, .tag-link, .content-meta, [class*="content-meta"], .read-time, .meta, [href*="tag"], .tag-index {
+  display: none !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+
+
+/* 4. ОЧИСТКА ВНУТРЕННИХ СТРОК АВТОМАТИЧЕСКОГО СПИСКА */
+.recent-notes li, [class*="recent-notes"] li {
+  display: none !important; /* Скрываем мусор по умолчанию */
+}
+
+/* Показываем строго реальные статьи, возвращая красивую дату справа */
+.recent-notes li:not(:has(a[href$="about"])):not(:has(a[href$="concepts"])):not(:has(a[href="/"])):not(:has(a[href*="index"])) {
+  display: flex !important;
+  justify-content: space-between !important; /* Разносит название влево, а дату вправо */
+  align-items: baseline !important;
+  margin-bottom: 1.2rem !important;
+  width: 100% !important;
+}
+
+/* ХИРУРГИЧЕСКИЙ ВЫВОД ДАТЫ НА ЭКРАН */
+/* Принудительно включаем показ даты, даже если Блок №3 пытается её скрыть */
+.recent-notes li:not(:has(a[href$="about"])) time, 
+.recent-notes li:not(:has(a[href$="about"])) span,
+.recent-notes li:not(:has(a[href$="about"])) [class*="meta"],
+.recent-notes li:not(:has(a[href$="about"])) [class*="date"] {
+  display: inline-block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  font-size: 0.85rem !important;
+  color: #646464 !important; /* Красивый серый цвет даты */
+  margin-left: 1rem !important;
+  white-space: nowrap !important;
+}
+
+/* Убираем дублирующий заголовок плагина */
+.recent-notes > h3, [class*="recent-notes"] > h3 {
+  display: none !important;
+}
+
+
+/* 5. ПОЛНОЕ ВЫКЛЮЧЕНИЕ СПИСКА НА СТРАНИЦАХ ABOUT И CONCEPTS */
+body:not([data-slug="index"]) {
+  .recent-notes, [class*="recent-notes"], .page-list, [class*="page-list"], .section-summary, .content-meta, [class*="content-meta"], .read-time {
+    display: none !important;
+  }
+}
+
+
+/* 6. ГЛОБАЛЬНЫЙ ДВУХСТРОЧНЫЙ ПОДВАЛ (FOOTER) */
+footer, .page-footer {
+  display: block !important;
+  visibility: visible !important;
+  text-align: center !important;
+  padding: 3rem 0 2rem 0 !important;
+  margin-top: 10rem !important;
+  border-top: 1px dashed #e5e5e5 !important;
+}
+footer p, footer a, footer [class*="meta"] { display: none !important; }
+footer::before {
+  content: "ORCID: 0009-0009-7030-8151 \A © 2026 Vivien Yor • VSCI Laboratory | All Rights Reserved" !important;
+  display: block !important;
+  white-space: pre-wrap !important;
+  font-size: 0.85rem !important;
+  line-height: 1.6 !important;
+  color: #646464 !important;
+}
+/* ИСПРАВЛЕНИЕ: ТОЧЕЧНОЕ УНИЧТОЖЕНИЕ ДОВЕСКА NOT FOUND НА ГЛАВНОЙ */
+body[data-slug="index"], 
+body {
+  /* Находим блоки ошибок, пустой пагинации и служебных индексов и полностью стираем их */
+  .error,
+  #error-message,
+  .not-found,
+  h1:contains("Not Found"),
+  div:contains("Not Found"),
+  .err,
+  #vsci-final-stream,
+  .tag-index {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+}
+/* ФИНАЛЬНОЕ УНИЧТОЖЕНИЕ ДОВЕСКА NOT FOUND И ПУСТЫХ ТЕГОВ */
+.err, 
+.error, 
+.not-found,
+[class*="error"],
+[class*="not-found"],
+h1[id*="not-found"],
+/* Находим любой элемент, внутри которого написано "Not Found" */
+*:contains("Not Found"),
+:contains("Not Found") {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  max-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Намертво прячем блок пустых ссылок на теги под списком */
+.recent-notes + h3, 
+.recent-notes + ul, 
+.tags, 
+[class*="tags"] {
+  display: none !important;
+}
