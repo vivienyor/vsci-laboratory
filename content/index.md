@@ -25,19 +25,8 @@ Where a calculated index score above the threshold of **0.75** shifts a national
 
 ## 📚 Foundation Research (Monographs)
 
-Фундаментальные монографии автора, закладывающие методологическую базу исследований лаборатории:
-
 * **[[атлас_власти|Vivien Yor. Atlas of Power. Volumes I–III (Zenodo, 2026)]]**
 * **[[кибербарокко|Vivien Yor. Cybernetic Baroque: Platform Neo-Absolutism and the Geopolitics of Sovereign Code (Zenodo, 2026)]]**
-
----
-
-## 📰 Recent Analysis
-
-Оперативные доклады, статьи и прикладной анализ цепочек поставок (новые материалы добавляются наверх секции):
-
-* **[[sovereignty-degradation-loop|Петля деградации суверенитета и новые оси связности в 2026 году (18.08.2026)]]**
-* **[[technorealism-yor|Введение в прикладной технореализм и контуры безопасности XXI века (01.08.2026)]]**
 
 ---
 
