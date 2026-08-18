@@ -1,28 +1,3 @@
----
-title: Vivien Yor • VSCI Laboratory
-weight: 1
----
-
-# Vivien Yor • VSCI Laboratory
-
-Independent analysis of geopolitics, technology, and global processes.
-
----
-
-## Core Operational Framework
-
-The VSCI Laboratory operates as an open-science platform exploring the structural shifts of **Technological Westphalia** and the era of **Cybernetic Baroque**. 
-
-Our quantitative analysis relies on the **VSCI Index (Vivien Yor Sovereignty & Connectivity Index)**, which measures real infrastructure and data sovereignty across three operational tiers. 
-
-For instance, the mathematical matrix for **Border Perimeter Security ($VSCI_{border}$)** is formally defined as:
-
-$$VSCI_{border} = w_1 \cdot M_{supply} + w_2 \cdot M_{digital} + w_3 \cdot M_{logistics}$$
-
-Where a calculated index score above the threshold of **0.75** shifts a national perimeter into the *Vulnerable Sovereign* status.
-
----
-
 ## 📚 Foundation Research
 
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin: 25px 0; width: 100%;">
@@ -35,7 +10,7 @@ Where a calculated index score above the threshold of **0.75** shifts a national
       <p style="font-size: 0.9rem; line-height: 1.5; margin: 0; color: var(--dark); opacity: 0.85;">A fundamental scientific work laying the methodological foundations of Tech-Realism and the concept of New Westphalia in the 21st century.</p>
     </div>
     <div style="margin-top: 20px;">
-      <a href="books/атлас_власти" style="display: inline-block; padding: 8px 16px; background: var(--secondary); color: var(--light); text-decoration: none; border-radius: 6px; font-size: 0.85rem; font-weight: bold;">Open Monograph →</a>
+      <a href="/monographs/atlas-of-power" style="display: inline-block; padding: 8px 16px; background: var(--secondary); color: var(--light); text-decoration: none; border-radius: 6px; font-size: 0.85rem; font-weight: bold;">Open Monograph →</a>
     </div>
   </div>
 
@@ -47,50 +22,8 @@ Where a calculated index score above the threshold of **0.75** shifts a national
       <p style="font-size: 0.9rem; line-height: 1.5; margin: 0; color: var(--dark); opacity: 0.85;">An in-depth analysis of the structural transformation of global political economy, digital governance, and platform neo-absolutism.</p>
     </div>
     <div style="margin-top: 20px;">
-      <a href="books/кибербарокко" style="display: inline-block; padding: 8px 16px; background: var(--secondary); color: var(--light); text-decoration: none; border-radius: 6px; font-size: 0.85rem; font-weight: bold;">Open Monograph →</a>
+      <a href="/monographs/cybernetic-baroque" style="display: inline-block; padding: 8px 16px; background: var(--secondary); color: var(--light); text-decoration: none; border-radius: 6px; font-size: 0.85rem; font-weight: bold;">Open Monograph →</a>
     </div>
   </div>
 
-</div>
-
----
-
-### Recent Analysis
-
-<script>
-  (function() {
-    function cleanVsciStream() {
-      const allElements = document.querySelectorAll('*');
-      allElements.forEach(function(el) {
-        if (el.textContent.trim() === "Not Found" || el.innerText === "Not Found") {
-          el.style.display = 'none';
-          el.innerHTML = '';
-        }
-      });
-
-      const listItems = document.querySelectorAll('.recent-notes li, [class*="recent-notes"] li');
-      listItems.forEach(function(item) {
-        const link = item.querySelector('a');
-        if (link) {
-          const href = link.getAttribute('href') || '';
-          const text = link.textContent || '';
-          
-          if (
-            href === '/' || 
-            href === './' || 
-            href.endsWith('index') || 
-            text.includes('Vivien Yor')
-          ) {
-            item.style.display = 'none';
-            item.innerHTML = ''; 
-          }
-        }
-      });
-    }
-
-    cleanVsciStream();
-    setTimeout(cleanVsciStream, 300);
-    setTimeout(cleanVsciStream, 800);
-    setTimeout(cleanVsciStream, 1500);
-  })();
-</script>
+</d
