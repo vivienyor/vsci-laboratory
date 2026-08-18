@@ -22,51 +22,79 @@ $$VSCI_{border} = w_1 \cdot M_{supply} + w_2 \cdot M_{digital} + w_3 \cdot M_{lo
 Where a calculated index score above the threshold of **0.75** shifts a national perimeter into the *Vulnerable Sovereign* status.
 
 ---
-## Foundation Research
 
-The mathematical and conceptual models used in this laboratory serve as a direct analytical extension of the fundamental author's monographs:
-* **[[атлас_власти|Vivien Yor. Atlas of Power. Volumes I–III (Zenodo, 2026)]]**
-* **[[кибербарокко|Vivien Yor. Cybernetic Baroque: Platform Neo-Absolutism and the Geopolitics of Sovereign Code (Zenodo, 2026)]]**
+## 📚 Foundation Research (Monographs)
+
+Фундаментальные монографии автора, закладывающие методологическую базу исследований лаборатории (доступны в секторе `books`):
+
+* **[[books/атлас_власти|Vivien Yor. Atlas of Power. Volumes I–III (Zenodo, 2026)]]**
+* **[[books/кибербарокко|Vivien Yor. Cybernetic Baroque: Platform Neo-Absolutism and the Geopolitics of Sovereign Code (Zenodo, 2026)]]**
 
 ---
 
-## Recent Analysis
+## 📰 Recent Analysis
 
-<style>
-  /* Жестко запрещаем элементам наползать друг на друга */
-  .vsci-auto-stream {
-    display: block !important;
-    position: relative !important;
-    clear: both !important;
-    margin-top: 20px !important;
-  }
-  .vsci-auto-stream ul {
-    list-style: none !important;
-    padding: 0 !important;
-    margin: 0 !important;
-  }
-  .vsci-auto-stream li {
-    display: flex !important;
-    align-items: baseline !important;
-    margin-bottom: 12px !important;
-    position: relative !important;
-    border-bottom: 1px solid var(--lightgray);
-    padding-bottom: 8px !important;
-  }
-  .vsci-auto-stream .meta {
-    min-width: 110px !important;
-    font-family: monospace !important;
-    color: var(--gray) !important;
-  }
-</style>
+Оперативные доклады, статьи и прикладной анализ цепочек поставок (новые материалы добавляются наверх секции):
 
-<div class="vsci-auto-stream">
+* **[[sovereignty-degradation-loop|Петля деградации суверенитета и новые оси связности в 2026 году (18.08.2026)]]**
+* **[[technorealism-yor|Введение в прикладной технореализм и контуры безопасности XXI века (01.08.2026)]]**
 
-```quartz:links
-style: list
-limit: 20
-sort: date
-descending: true
-```
+---
 
-</div>
+### Recent Analysis
+
+<script>
+  (function() {
+    function killNotFound() {
+      const elements = document.querySelectorAll('*');
+      elements.forEach(el => {
+        if (el.textContent.trim() === "Not Found" || el.innerText === "Not Found") {
+          el.style.display = 'none';
+          el.style.opacity = '0';
+          el.style.visibility = 'hidden';
+          el.innerHTML = '';
+        }
+      });
+    }
+    killNotFound();
+    setTimeout(killNotFound, 500);
+    setTimeout(killNotFound, 1500);
+  })();
+</script>
+<script>
+  (function() {
+    function cleanVsciStream() {
+      const allElements = document.querySelectorAll('*');
+      allElements.forEach(function(el) {
+        if (el.textContent.trim() === "Not Found" || el.innerText === "Not Found") {
+          el.style.display = 'none';
+          el.innerHTML = '';
+        }
+      });
+
+      const listItems = document.querySelectorAll('.recent-notes li, [class*="recent-notes"] li');
+      listItems.forEach(function(item) {
+        const link = item.querySelector('a');
+        if (link) {
+          const href = link.getAttribute('href') || '';
+          const text = link.textContent || '';
+          
+          if (
+            href === '/' || 
+            href === './' || 
+            href.endsWith('index') || 
+            text.includes('Vivien Yor')
+          ) {
+            item.style.display = 'none';
+            item.innerHTML = ''; 
+          }
+        }
+      });
+    }
+
+    cleanVsciStream();
+    setTimeout(cleanVsciStream, 300);
+    setTimeout(cleanVsciStream, 800);
+    setTimeout(cleanVsciStream, 1500);
+  })();
+</script>
