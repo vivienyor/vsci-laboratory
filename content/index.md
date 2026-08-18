@@ -5,17 +5,38 @@ weight: 1
 
 # Vivien Yor • VSCI Laboratory
 
-Independent analysis of geopolitics, technology, and global processes
+Independent analysis of geopolitics, technology, and global processes.
+
+---
+
+## Core Operational Framework
+
+The VSCI Laboratory operates as an open-science platform exploring the structural shifts of **Technological Westphalia** and the era of **Cybernetic Baroque**. 
+
+Our quantitative analysis relies on the **VSCI Index (Vivien Yor Sovereignty & Connectivity Index)**, which measures real infrastructure and data sovereignty across three operational tiers. 
+
+For instance, the mathematical matrix for **Border Perimeter Security ($VSCI_{border}$)** is formally defined as:
+
+$$VSCI_{border} = w_1 \cdot M_{supply} + w_2 \cdot M_{digital} + w_3 \cdot M_{logistics}$$
+
+Where a calculated index score above the threshold of **0.75** shifts a national perimeter into the *Vulnerable Sovereign* status.
+
+---
+## Foundation Research
+
+The mathematical and conceptual models used in this laboratory serve as a direct analytical extension of the fundamental author's monographs:
+* **[[атлас_власти|Vivien Yor. Atlas of Power. Volumes I–III (Zenodo, 2026)]]**
+* **[[кибербарокко|Vivien Yor. Cybernetic Baroque: Platform Neo-Absolutism and the Geopolitics of Sovereign Code (Zenodo, 2026)]]**
+---
+
 
 ### Recent Analysis
 
 <script>
   (function() {
     function killNotFound() {
-      // Находим вообще все элементы на странице
       const elements = document.querySelectorAll('*');
       elements.forEach(el => {
-        // Если внутри элемента написано "Not Found" — полностью стираем его
         if (el.textContent.trim() === "Not Found" || el.innerText === "Not Found") {
           el.style.display = 'none';
           el.style.opacity = '0';
@@ -24,7 +45,6 @@ Independent analysis of geopolitics, technology, and global processes
         }
       });
     }
-    // Запускаем проверку сразу и повторно через секунду для надежности
     killNotFound();
     setTimeout(killNotFound, 500);
     setTimeout(killNotFound, 1500);
@@ -33,7 +53,6 @@ Independent analysis of geopolitics, technology, and global processes
 <script>
   (function() {
     function cleanVsciStream() {
-      // 1. Стираем текстовые упоминания Not Found
       const allElements = document.querySelectorAll('*');
       allElements.forEach(function(el) {
         if (el.textContent.trim() === "Not Found" || el.innerText === "Not Found") {
@@ -42,7 +61,6 @@ Independent analysis of geopolitics, technology, and global processes
         }
       });
 
-      // 2. Вырезаем дубликаты главной страницы из списка автоматических новостей
       const listItems = document.querySelectorAll('.recent-notes li, [class*="recent-notes"] li');
       listItems.forEach(function(item) {
         const link = item.querySelector('a');
