@@ -25,10 +25,10 @@ Where a calculated index score above the threshold of **0.75** shifts a national
 
 ## 📚 Foundation Research (Monographs)
 
-Фундаментальные монографии автора, закладывающие методологическую базу исследований лаборатории (доступны в секторе `books`):
+Фундаментальные монографии автора, закладывающие методологическую базу исследований лаборатории:
 
-* **[[books/атлас_власти|Vivien Yor. Atlas of Power. Volumes I–III (Zenodo, 2026)]]**
-* **[[books/кибербарокко|Vivien Yor. Cybernetic Baroque: Platform Neo-Absolutism and the Geopolitics of Sovereign Code (Zenodo, 2026)]]**
+* **[[атлас_власти|Vivien Yor. Atlas of Power. Volumes I–III (Zenodo, 2026)]]**
+* **[[кибербарокко|Vivien Yor. Cybernetic Baroque: Platform Neo-Absolutism and the Geopolitics of Sovereign Code (Zenodo, 2026)]]**
 
 ---
 
