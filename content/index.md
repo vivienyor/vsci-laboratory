@@ -23,13 +23,6 @@ Where a calculated index score above the threshold of **0.75** shifts a national
 
 ---
 
-## 📚 Foundation Research (Monographs)
-
-* **[[атлас_власти|Vivien Yor. Atlas of Power. Volumes I–III (Zenodo, 2026)]]**
-* **[[кибербарокко|Vivien Yor. Cybernetic Baroque: Platform Neo-Absolutism and the Geopolitics of Sovereign Code (Zenodo, 2026)]]**
-
----
-
 ### Recent Analysis
 
 <script>
