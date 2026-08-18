@@ -34,8 +34,8 @@ Where a calculated index score above the threshold of **0.75** shifts a national
       <h3 style="margin: 10px 0 12px 0; color: var(--secondary); font-size: 1.4rem;">Atlas of Power</h3>
       <p style="font-size: 0.9rem; line-height: 1.5; margin: 0; color: var(--dark); opacity: 0.85;">A fundamental scientific work laying the methodological foundations of Tech-Realism and the concept of New Westphalia in the 21st century.</p>
     </div>
-    <div style="margin-top: 20px; font-weight: bold;">
-      [[books/атлас_власти|Open Monograph →]]
+    <div style="margin-top: 20px;">
+      <a href="books/атлас_власти" style="display: inline-block; padding: 8px 16px; background: var(--secondary); color: var(--light); text-decoration: none; border-radius: 6px; font-size: 0.85rem; font-weight: bold;">Open Monograph →</a>
     </div>
   </div>
 
@@ -46,8 +46,8 @@ Where a calculated index score above the threshold of **0.75** shifts a national
       <h3 style="margin: 10px 0 12px 0; color: var(--secondary); font-size: 1.4rem;">Cybernetic Baroque</h3>
       <p style="font-size: 0.9rem; line-height: 1.5; margin: 0; color: var(--dark); opacity: 0.85;">An in-depth analysis of the structural transformation of global political economy, digital governance, and platform neo-absolutism.</p>
     </div>
-    <div style="margin-top: 20px; font-weight: bold;">
-      [[books/кибербарокко|Open Monograph →]]
+    <div style="margin-top: 20px;">
+      <a href="books/кибербарокко" style="display: inline-block; padding: 8px 16px; background: var(--secondary); color: var(--light); text-decoration: none; border-radius: 6px; font-size: 0.85rem; font-weight: bold;">Open Monograph →</a>
     </div>
   </div>
 
