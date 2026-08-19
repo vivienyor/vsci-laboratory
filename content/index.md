@@ -13,13 +13,30 @@ Independent analysis of geopolitics, technology, and global processes.
 
 The VSCI Laboratory operates as an open-science platform exploring the structural shifts of **Technological Westphalia** and the era of **Cybernetic Baroque**. 
 
-Our quantitative analysis relies on the **VSCI Index (Vivien Yor Sovereignty & Connectivity Index)**, which measures real infrastructure and data sovereignty across three operational tiers. 
+Our quantitative analysis relies on the **VSCI Index (Vivien's Sovereignty & Connectivity Index)**, which measures real infrastructure and data sovereignty across operational tiers.
 
-For instance, the mathematical matrix for **Border Perimeter Security ($VSCI_{border}$)** is formally defined as:
+---
 
-$$VSCI_{border} = w_1 \cdot M_{supply} + w_2 \cdot M_{digital} + w_3 \cdot M_{logistics}$$
+## Measurement Level (The Toolkit)
 
-Where a calculated index score above the threshold of **0.75** shifts a national perimeter into the *Vulnerable Sovereign* status.
+<div style="padding: 30px; background: var(--light); border: 1px solid var(--lightgray); border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.04); margin: 25px 0;">
+
+<span style="font-family: monospace; font-size: 0.75rem; color: var(--secondary); text-transform: uppercase; letter-spacing: 2px; font-weight: bold; display: block; text-align: center; margin-bottom: 15px;">Vivien’s Sovereignty & Connectivity Index Matrix</span>
+
+$$VSCI = w_1 \cdot S_{il} + w_2 \cdot S_{ft} + w_3 \cdot E_{ng} + w_4 \cdot D_{at}$$
+
+<p style="text-align: center; font-size: 0.95rem; color: var(--darkgray); max-width: 600px; margin: 15px auto 25px auto; line-height: 1.5;">
+  Measures actual technological autarky through calculated weight coefficients across four critical infrastructural layers.
+</p>
+
+<hr style="border: 0; border-top: 1px dashed var(--lightgray); margin: 20px 0;">
+
+* **$S_{il}$ • Silicon Layer** — Hardware autarky, semiconductor manufacturing independence, and lithography capacity.
+* **$S_{ft}$ • Software Stack** — Independent operating systems, core algorithmic workflows, and auditable processing code.
+* **$E_{ng}$ • Energy Grid** — Power infrastructure resilience, computing center supply, and structural grid autonomy.
+* **$D_{at}$ • Data Sovereignty** — Structured machine-readable datasets, local storage networks, and cryptographic validation.
+
+</div>
 
 ---
 
@@ -34,8 +51,8 @@ Where a calculated index score above the threshold of **0.75** shifts a national
       <h3 style="margin: 10px 0 12px 0; color: var(--secondary); font-size: 1.4rem;">Atlas of Power</h3>
       <p style="font-size: 0.9rem; line-height: 1.5; margin: 0; color: var(--dark); opacity: 0.85;">A fundamental scientific work laying the methodological foundations of Tech-Realism and the concept of New Westphalia in the 21st century.</p>
     </div>
-    <div style="margin-top: 20px;">
-      <a href="books/атлас_власти" style="display: inline-block; padding: 8px 16px; background: var(--secondary); color: var(--light); text-decoration: none; border-radius: 6px; font-size: 0.85rem; font-weight: bold;">Open Monograph →</a>
+    <div style="margin-top: 24px; padding: 10px; background: rgba(143, 159, 169, 0.08); border: 1px solid var(--lightgray); border-radius: 6px; font-family: monospace; font-size: 0.8rem; text-align: center; color: var(--secondary); font-weight: bold; letter-spacing: 0.5px;">
+      DOI: 10.5281/zenodo.21533111
     </div>
   </div>
 
@@ -46,14 +63,17 @@ Where a calculated index score above the threshold of **0.75** shifts a national
       <h3 style="margin: 10px 0 12px 0; color: var(--secondary); font-size: 1.4rem;">Cybernetic Baroque</h3>
       <p style="font-size: 0.9rem; line-height: 1.5; margin: 0; color: var(--dark); opacity: 0.85;">An in-depth analysis of the structural transformation of global political economy, digital governance, and platform neo-absolutism.</p>
     </div>
-    <div style="margin-top: 20px;">
-      <a href="books/кибербарокко" style="display: inline-block; padding: 8px 16px; background: var(--secondary); color: var(--light); text-decoration: none; border-radius: 6px; font-size: 0.85rem; font-weight: bold;">Open Monograph →</a>
+    <div style="margin-top: 24px; padding: 10px; background: rgba(143, 159, 169, 0.08); border: 1px solid var(--lightgray); border-radius: 6px; font-family: monospace; font-size: 0.8rem; text-align: center; color: var(--secondary); font-weight: bold; letter-spacing: 0.5px;">
+      DOI: 10.5281/zenodo.21669927
     </div>
   </div>
 
 </div>
 
 ---
+
+
+
 
 ### Recent Analysis
 

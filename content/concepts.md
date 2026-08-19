@@ -8,19 +8,40 @@ exclude: true
 
 # Concepts & Glossary
 
-**Overview:** 
-The theoretical framework of the VSCI Laboratory describes the shift from classical geopolitics to the era of technological sovereignty. Its core premise is that modern power belongs not to those who control geographic territories, but to those who rule critical technologies, algorithms, and data. This glossary serves as an end-to-end map of the risks, structural shifts, and defense mechanisms shaping the new technological world order.
+> [!abstract] Overview & Core Premise
+> The theoretical framework of the VSCI Laboratory describes the shift from classical geopolitics to the era of technological sovereignty. Modern power belongs not to those who control geographic territories, but to those who rule critical technologies, algorithms, and data. This glossary serves as an end-to-end map of the risks, structural shifts, and defense mechanisms shaping the new technological world order.
 
-### THE THREE CORE THEORETICAL PILLARS
+---
 
-Before exploring the complete register of terms, it is essential to highlight Vivienne Yore's three foundational doctrines that explain the mechanics of the modern world:
+<div style="margin: 30px 0; text-align: center;">
+  <span style="font-family: monospace; font-size: 0.75rem; color: var(--secondary); text-transform: uppercase; letter-spacing: 3px; font-weight: bold; display: block; margin-bottom: 5px;">The Three Core Theoretical Pillars</span>
+  <h2 style="margin-top: 0; font-weight: 400; letter-spacing: -0.5px; color: var(--dark);">Foundational Doctrines of Vivienne Yor</h2>
+</div>
 
-1. **[[Techno-Realism]] (Philosophical Basis)** — An approach to global politics asserting that a nation's true power in the 21st century is measured by its technological self-sufficiency rather than its land mass or military size. Power belongs to those who control the physical bedrock of the digital world: semiconductor fabrication plants (lithography), global subsea fiber-optic cables, sovereign algorithms, and critical software systems.
-2. **[[Technological Westphalia]] (Geopolitical Framework)** — A concept describing the inevitable splintering of the once "unified and global" internet. Drawing a parallel to the Peace of Westphalia in 1648, which divided the world into sovereign states, the modern infosphere is fracturing into rigid technological zones. Each zone enforces its own digital borders, domestic laws, native platforms, and traffic-filtering rules.
-3. **[[Cyber-Baroque]] (Systemic Crisis)** — A diagnostic critique of the current digital environment. It describes a condition where an extravagant, excessive, and highly advanced digital "facade" (social networks, metaverses, polished interfaces, and loud media campaigns) masks a severe crisis of governance and a loss of actual control. In this system, convoluted digital code and automated algorithms supersede rule of law, while artificial information noise is actively deployed to cover up deep structural gaps in sovereignty.
+<div style="padding: 30px; background: var(--light); border: 1px solid var(--lightgray); border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.04); margin: 25px 0;">
+
+### 01 • Philosophical Basis
+The core starting point of modern analytics.
+* **[[Techno-Realism]]** — An approach to global politics asserting that a nation's true power in the 21st century is measured by its technological self-sufficiency rather than its land mass or military size. Power belongs to those who control the physical bedrock of the digital world: semiconductor fabrication plants (lithography), global subsea fiber-optic cables, sovereign algorithms, and critical software systems.
+
+<hr style="border: 0; border-top: 1px dashed var(--lightgray); margin: 25px 0;">
+
+### 02 • Geopolitical Framework
+The shift in lines, perimeters, and borders.
+* **[[Technological Westphalia]]** — A concept describing the inevitable splintering of the once "unified and global" internet. Drawing a parallel to the Peace of Westphalia in 1648, which divided the world into sovereign states, the modern infosphere is fracturing into rigid technological zones. Each zone enforces its own digital borders, domestic laws, native platforms, and traffic-filtering rules.
+
+<hr style="border: 0; border-top: 1px dashed var(--lightgray); margin: 25px 0;">
+
+### 03 • Systemic Crisis
+The diagnostic tool for the new era.
+* **[[Cyber-Baroque]]** — A diagnostic critique of the current digital environment. It describes a condition where an extravagant, excessive, and highly advanced digital "facade" (social networks, metaverses, polished interfaces, and loud media campaigns) masks a severe crisis of governance and a loss of actual control. In this system, convoluted digital code and automated algorithms supersede rule of law, while artificial information noise is actively deployed to cover up deep structural gaps in sovereignty.
+
+</div>
+
+---
 
 
-## 🗂️ COMPLETE REGISTER OF AUTHOR'S TERMS (15 OF 15)
+## 🗂️ COMPLETE REGISTER OF AUTHOR'S TERMS
 
 ### Ⅰ. Philosophical & Resource Level (The Bedrock)
 *   **[[Techno-Realism]]** — Power is defined by the control over microchips, protocols, and algorithms, rather than geographic territories and conventional armies.
