@@ -20,6 +20,9 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+    env:
+      # Разрешаем временную работу со старыми зависимостями в эпоху Node 24
+      ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -29,7 +32,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 24
 
       - name: Install Dependencies
         run: npm ci
