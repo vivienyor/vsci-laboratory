@@ -152,10 +152,8 @@ h1[id*="not-found"],
   padding: 0 !important;
 }
 
-/* Намертво прячем блок пустых ссылок на теги под списком */
-.recent-notes + h3, 
-.recent-notes + ul, 
-.tags, 
-[class*="tags"] {
-  display: none !important;
-}
+// Добавляем флаг перед главным заголовком статьи в зависимости от класса
+body.lang-ru h1.article-title::before { content: "🇷🇺 "; }
+body.lang-en h1.article-title::before { content: "🇬🇧 "; }
+body.lang-fr h1.article-title::before { content: "🇫🇷 "; }
+body.lang-es h1.article-title::before { content: "🇪🇸 "; }

@@ -1,6 +1,7 @@
 ---
 title: "The Sovereignty Degradation Loop and New Connectivity Axes: Where the VSCI Index Leads in 2026"
 date: 2026-08-17
+language: en
 tags:
   - technological_westphalia
   - индекс_vsci
