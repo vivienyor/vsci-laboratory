@@ -72,14 +72,12 @@ $$VSCI = w_1 \cdot S_{il} + w_2 \cdot S_{ft} + w_3 \cdot E_{ng} + w_4 \cdot D_{a
 
 ---
 
-
-
-
 ### Recent Analysis
 
 <script>
   (function() {
-    function cleanVsciStream() {
+    function cleanAndFlagVsciStream() {
+      // 1. Убираем "Not Found"
       const allElements = document.querySelectorAll('*');
       allElements.forEach(function(el) {
         if (el.textContent.trim() === "Not Found" || el.innerText === "Not Found") {
@@ -88,29 +86,72 @@ $$VSCI = w_1 \cdot S_{il} + w_2 \cdot S_{ft} + w_3 \cdot E_{ng} + w_4 \cdot D_{a
         }
       });
 
+      // Словарь флагов
+      const flags = {
+        'ru': '🇷🇺',
+        'en': '🇬🇧',
+        'fr': '🇫🇷',
+        'es': '🇪🇸'
+      };
+
+      // 2. Обрабатываем элементы списка последних статей
       const listItems = document.querySelectorAll('.recent-notes li, [class*="recent-notes"] li');
       listItems.forEach(function(item) {
         const link = item.querySelector('a');
         if (link) {
-          const href = link.getAttribute('href') || '';
-          const text = link.textContent || '';
+          const href = (link.getAttribute('href') || '').toLowerCase();
+          const text = link.textContent.toLowerCase();
           
+          // Фильтр мусора (ваша оригинальная логика)
           if (
             href === '/' || 
             href === './' || 
             href.endsWith('index') || 
-            text.includes('Vivien Yor')
+            text.includes('vivien yor')
           ) {
             item.style.display = 'none';
             item.innerHTML = ''; 
+            return;
+          }
+
+          // МАГИЯ ФЛАЖКОВ
+          if (!item.dataset.flagged) {
+            let flag = '';
+            
+            // Получаем весь текст внутри элемента списка (включая теги, если Quartz их выводит)
+            const fullText = item.textContent.toLowerCase();
+
+            // Проверяем: если в названии или тегах есть упоминание языка
+            if (fullText.includes('lang-ru') || fullText.includes('language: ru') || href.includes('lang-ru')) flag = flags.ru;
+            else if (fullText.includes('lang-en') || fullText.includes('language: en') || href.includes('lang-en')) flag = flags.en;
+            else if (fullText.includes('lang-fr') || fullText.includes('language: fr') || href.includes('lang-fr')) flag = flags.fr;
+            else if (fullText.includes('lang-es') || fullText.includes('language: es') || href.includes('lang-es')) flag = flags.es;
+
+            // Если по тегам не нашлось, ищем по контексту букв в названии ссылки
+            if (!flag) {
+              if (text.includes('вестфалия') || text.includes('ру') || href.includes('ru')) flag = flags.ru;
+              // Можно добавить маркеры для других языков, если они отличаются в названиях
+            }
+
+            // Если флаг определен — вставляем перед ссылкой
+            if (flag) {
+              const flagSpan = document.createElement('span');
+              flagSpan.textContent = flag + ' ';
+              flagSpan.style.marginRight = '6px';
+              flagSpan.style.fontSize = '1.1em';
+              link.parentNode.insertBefore(flagSpan, link);
+            }
+            
+            item.dataset.flagged = 'true';
           }
         }
       });
     }
 
-    cleanVsciStream();
-    setTimeout(cleanVsciStream, 300);
-    setTimeout(cleanVsciStream, 800);
-    setTimeout(cleanVsciStream, 1500);
+    // Запуски с задержкой для динамического контента Quartz
+    cleanAndFlagVsciStream();
+    setTimeout(cleanAndFlagVsciStream, 300);
+    setTimeout(cleanAndFlagVsciStream, 800);
+    setTimeout(cleanAndFlagVsciStream, 1500);
   })();
 </script>
