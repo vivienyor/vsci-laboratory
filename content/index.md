@@ -77,81 +77,60 @@ $$VSCI = w_1 \cdot S_{il} + w_2 \cdot S_{ft} + w_3 \cdot E_{ng} + w_4 \cdot D_{a
 <script>
   (function() {
     function cleanAndFlagVsciStream() {
-      // 1. Убираем "Not Found"
-      const allElements = document.querySelectorAll('*');
-      allElements.forEach(function(el) {
-        if (el.textContent.trim() === "Not Found" || el.innerText === "Not Found") {
+      // 1. Мягко скрываем "Not Found", не удаляя узлы сетки
+      document.querySelectorAll('*').forEach(function(el) {
+        if (el.children.length === 0 && (el.textContent.trim() === "Not Found" || el.innerText === "Not Found")) {
           el.style.display = 'none';
-          el.innerHTML = '';
         }
       });
 
-      // Словарь флагов
-      const flags = {
-        'ru': '🇷🇺',
-        'en': '🇬🇧',
-        'fr': '🇫🇷',
-        'es': '🇪🇸'
-      };
+      const flags = { 'ru': '🇷🇺', 'en': '🇬🇧', 'fr': '🇫🇷', 'es': '🇪🇸' };
 
-      // 2. Обрабатываем элементы списка последних статей
-      const listItems = document.querySelectorAll('.recent-notes li, [class*="recent-notes"] li');
-      listItems.forEach(function(item) {
+      // 2. Безопасно обрабатываем элементы списков Quartz 5
+      const items = document.querySelectorAll('.recent-notes li, [class*="recent-notes"] li, .explorer-item');
+      items.forEach(function(item) {
         const link = item.querySelector('a');
         if (link) {
           const href = (link.getAttribute('href') || '').toLowerCase();
           const text = link.textContent.toLowerCase();
           
-          // Фильтр мусора (ваша оригинальная логика)
-          if (
-            href === '/' || 
-            href === './' || 
-            href.endsWith('index') || 
-            text.includes('vivien yor')
-          ) {
-            item.style.display = 'none';
-            item.innerHTML = ''; 
+          // Мягкий фильтр мусора: скрываем, но не очищаем innerHTML
+          if (href === '/' || href === './' || href.endsWith('index') || text.includes('vivien yor')) {
+            item.style.style.display = 'none';
             return;
           }
 
-          // МАГИЯ ФЛАЖКОВ
-          if (!item.dataset.flagged) {
+          if (!item.dataset.vsciFlagged) {
             let flag = '';
-            
-            // Получаем весь текст внутри элемента списка (включая теги, если Quartz их выводит)
             const fullText = item.textContent.toLowerCase();
 
-            // Проверяем: если в названии или тегах есть упоминание языка
-            if (fullText.includes('lang-ru') || fullText.includes('language: ru') || href.includes('lang-ru')) flag = flags.ru;
-            else if (fullText.includes('lang-en') || fullText.includes('language: en') || href.includes('lang-en')) flag = flags.en;
-            else if (fullText.includes('lang-fr') || fullText.includes('language: fr') || href.includes('lang-fr')) flag = flags.fr;
-            else if (fullText.includes('lang-es') || fullText.includes('language: es') || href.includes('lang-es')) flag = flags.es;
-
-            // Если по тегам не нашлось, ищем по контексту букв в названии ссылки
-            if (!flag) {
-              if (text.includes('вестфалия') || text.includes('ру') || href.includes('ru')) flag = flags.ru;
-              // Можно добавить маркеры для других языков, если они отличаются в названиях
+            if (fullText.includes('lang-ru') || fullText.includes('language: ru') || href.includes('lang-ru') || text.includes('вестфалия') || text.includes('технореализм')) {
+              flag = flags.ru;
+            } else if (fullText.includes('lang-en') || fullText.includes('language: en') || href.includes('lang-en')) {
+              flag = flags.en;
+            } else if (fullText.includes('lang-fr') || fullText.includes('language: fr') || href.includes('lang-fr')) {
+              flag = flags.fr;
+            } else if (fullText.includes('lang-es') || fullText.includes('language: es') || href.includes('lang-es')) {
+              flag = flags.es;
             }
 
-            // Если флаг определен — вставляем перед ссылкой
             if (flag) {
-              const flagSpan = document.createElement('span');
-              flagSpan.textContent = flag + ' ';
-              flagSpan.style.marginRight = '6px';
-              flagSpan.style.fontSize = '1.1em';
-              link.parentNode.insertBefore(flagSpan, link);
+              if (!link.textContent.startsWith(flag)) {
+                link.textContent = flag + ' ' + link.textContent;
+              }
             }
-            
-            item.dataset.flagged = 'true';
+            item.dataset.vsciFlagged = 'true';
           }
         }
       });
     }
 
-    // Запуски с задержкой для динамического контента Quartz
+    // Привязка к SPA роутеру Quartz 5
     cleanAndFlagVsciStream();
-    setTimeout(cleanAndFlagVsciStream, 300);
-    setTimeout(cleanAndFlagVsciStream, 800);
-    setTimeout(cleanAndFlagVsciStream, 1500);
+    document.addEventListener("nav", cleanAndFlagVsciStream);
+    
+    // Страховочные задержки
+    setTimeout(cleanAndFlagVsciStream, 100);
+    setTimeout(cleanAndFlagVsciStream, 600);
   })();
 </script>
