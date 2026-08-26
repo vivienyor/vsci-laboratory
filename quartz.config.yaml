@@ -93,9 +93,9 @@ plugins:
     enabled: true
   - source: "@quartz-community/content-page"
     enabled: true
-  - source: "github:quartz-community/folder-page"
+  - source: "@quartz-community/folder-page"
     enabled: true
-  - source: "github:quartz-community/tag-page"
+  - source: "@quartz-community/tag-page"
     enabled: true
     
   - source: "@quartz-community/explorer"
@@ -176,6 +176,7 @@ layout:
     index:
       exclude:
         - article-title
+        - content-meta
       positions:
         beforeBody: ["breadcrumbs", "recent-notes"]
         left: ["page-title", "toolbar", "explorer"]
