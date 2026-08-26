@@ -77,7 +77,7 @@ $$VSCI = w_1 \cdot S_{il} + w_2 \cdot S_{ft} + w_3 \cdot E_{ng} + w_4 \cdot D_{a
 <script>
   (function() {
     function cleanAndFlagVsciStream() {
-      // 1. Мягко скрываем "Not Found", не удаляя узлы сетки
+      // 1. Мягко скрываем системные надписи "Not Found"
       document.querySelectorAll('*').forEach(function(el) {
         if (el.children.length === 0 && (el.textContent.trim() === "Not Found" || el.innerText === "Not Found")) {
           el.style.display = 'none';
@@ -86,7 +86,7 @@ $$VSCI = w_1 \cdot S_{il} + w_2 \cdot S_{ft} + w_3 \cdot E_{ng} + w_4 \cdot D_{a
 
       const flags = { 'ru': '🇷🇺', 'en': '🇬🇧', 'fr': '🇫🇷', 'es': '🇪🇸' };
 
-      // 2. Безопасно обрабатываем элементы списков Quartz 5
+      // 2. Обрабатываем списки статей
       const items = document.querySelectorAll('.recent-notes li, [class*="recent-notes"] li, .explorer-item');
       items.forEach(function(item) {
         const link = item.querySelector('a');
@@ -94,9 +94,9 @@ $$VSCI = w_1 \cdot S_{il} + w_2 \cdot S_{ft} + w_3 \cdot E_{ng} + w_4 \cdot D_{a
           const href = (link.getAttribute('href') || '').toLowerCase();
           const text = link.textContent.toLowerCase();
           
-          // Мягкий фильтр мусора: скрываем, но не очищаем innerHTML
+          // Фильтр ссылок на корень или на главную страницу автора
           if (href === '/' || href === './' || href.endsWith('index') || text.includes('vivien yor')) {
-            item.style.style.display = 'none';
+            item.style.display = 'none';
             return;
           }
 
@@ -125,12 +125,12 @@ $$VSCI = w_1 \cdot S_{il} + w_2 \cdot S_{ft} + w_3 \cdot E_{ng} + w_4 \cdot D_{a
       });
     }
 
-    // Привязка к SPA роутеру Quartz 5
+    // Запуск и интеграция с роутером Quartz 5
     cleanAndFlagVsciStream();
     document.addEventListener("nav", cleanAndFlagVsciStream);
     
-    // Страховочные задержки
-    setTimeout(cleanAndFlagVsciStream, 100);
-    setTimeout(cleanAndFlagVsciStream, 600);
+    // Задержки для ленивой динамической загрузки контента
+    setTimeout(cleanAndFlagVsciStream, 150);
+    setTimeout(cleanAndFlagVsciStream, 700);
   })();
 </script>
