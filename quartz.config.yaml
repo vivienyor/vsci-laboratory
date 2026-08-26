@@ -93,9 +93,9 @@ plugins:
     enabled: true
   - source: "@quartz-community/content-page"
     enabled: true
-  - source: "@quartz-community/folder-page"
+  - source: "github:quartz-community/folder-page"
     enabled: true
-  - source: "@quartz-community/tag-page"
+  - source: "github:quartz-community/tag-page"
     enabled: true
     
   - source: "@quartz-community/explorer"
@@ -105,7 +105,6 @@ plugins:
     options:
       title: "Explorer"
       showRoot: false
-      folderDefaultState: "open"
 
   - source: "@quartz-community/graph"
     enabled: true
@@ -174,17 +173,14 @@ layout:
         beforeBody: []
         left: []
         right: []
-    # На главной странице рендерится только сайдбар, список статей и граф
     index:
       exclude:
         - article-title
-        - content-meta
       positions:
         beforeBody: ["breadcrumbs", "recent-notes"]
         left: ["page-title", "toolbar", "explorer"]
         right: ["graph", "backlinks"]
         footer: ["footer"]
-    # На трех внутренних страницах (sparks, concepts, about) список recent-notes ПОЛНОСТЬЮ ОТКЛЮЧЕН
     content:
       exclude:
         - recent-notes
