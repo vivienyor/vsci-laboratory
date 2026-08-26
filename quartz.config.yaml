@@ -3,17 +3,16 @@ configuration:
   pageTitle: Vivien Yor - VSCI Laboratory
   pageTitleSuffix: ""
   enableSPA: true
-  enablePopovers: false # Полностью выключено, чтобы статьи не всплывали при наведении
+  enablePopovers: false
   analytics:
     provider: plausible
   locale: en-US
   baseUrl: vivienyor.github.io/vsci-laboratory
   ignorePatterns:
-    - private
-    - templates
-    - .obsidian
-    # ФИКС 1: Добавляем папку analysis в игнорирование, она СОВСЕМ исчезнет с сайта
-    - analysis 
+    - "private"
+    - "templates"
+    - ".obsidian"
+    - "**/analysis/**"
   theme:
     fontOrigin: googleFonts
     cdnCaching: true
@@ -40,6 +39,8 @@ configuration:
         tertiary: "#84a59d"
 
 plugins:
+  - source: "@quartz-community/frontmatter"
+    enabled: true
   - source: "@quartz-community/created-modified-date"
     enabled: true
   - source: "@quartz-community/syntax-highlighting"
@@ -76,13 +77,13 @@ plugins:
   - source: "@quartz-community/recent-notes"
     enabled: true
     options:
-      limit: 20            # Выводить ровно до 20 статей
-      showTags: false      # Скрываем теги, оставляем только названия
-      showDate: true       # Обязательно выводим дату
-      linkToMore: false    # Убираем лишнюю кнопку перехода
-      includeFuture: true  # Страховка, чтобы статьи не исчезали из-за часовых поясов
+      limit: 20
+      showTags: false
+      showDate: true
+      linkToMore: false
+      includeFuture: true
     layout:
-      position: beforeBody # Выводит список по центру страницы под заголовком
+      position: beforeBody
 
   - source: "@quartz-community/favicon"
     enabled: true
@@ -97,19 +98,14 @@ plugins:
   - source: "@quartz-community/tag-page"
     enabled: true
     
-  # ФИКС 2: Настройка бокового меню (Включаем жесткий порядок разделов)
   - source: "@quartz-community/explorer"
     enabled: true
     layout:
       position: left
     options:
       title: "Explorer"
-      showRoot: false # Скрывает ненужный заголовок "Home"
-      order:
-        - index
-        - sparks
-        - concepts
-        - about
+      showRoot: false
+      folderDefaultState: "open"
 
   - source: "@quartz-community/graph"
     enabled: true
@@ -158,14 +154,7 @@ plugins:
       condition: not-index
   - source: "@quartz-community/comments"
     enabled: false
-  - source: "@quartz-community/bases-page"
-    enabled: true
-    order: 50
-  - source: "@quartz-community/obsidian-plugin-excalidraw"
-    enabled: true
-    order: 50
-    
-  # ФИКС ПОДВАЛА: Ссылка теперь ведет четко на ваш профиль ORCID
+
   - source: "@quartz-community/footer"
     enabled: true
     layout:
@@ -185,17 +174,17 @@ layout:
         beforeBody: []
         left: []
         right: []
-    # 1. ГЛАВНАЯ СТРАНИЦА: Возвращаем стабильную структуру
+    # На главной странице рендерится только сайдбар, список статей и граф
     index:
       exclude:
         - article-title
+        - content-meta
       positions:
-        beforeBody: ["breadcrumbs", "recent-notes"] # Ставим обратно сюда для стабильности
+        beforeBody: ["breadcrumbs", "recent-notes"]
         left: ["page-title", "toolbar", "explorer"]
         right: ["graph", "backlinks"]
         footer: ["footer"]
-
-    # 2. СТРАНИЦЫ ABOUT И CONCEPTS
+    # На трех внутренних страницах (sparks, concepts, about) список recent-notes ПОЛНОСТЬЮ ОТКЛЮЧЕН
     content:
       exclude:
         - recent-notes
@@ -205,7 +194,6 @@ layout:
         left: ["page-title", "toolbar", "explorer"]
         right: ["graph", "backlinks"]
         footer: ["footer"]
-    # 3. Страницы папок-разделов
     folder:
       exclude:
         - reader-mode
@@ -226,75 +214,3 @@ layout:
         right: []
     canvas: {}
     bases: {}
-
-
-customStyles: |
-  /* 1. Перенос длинных строк в сайдбаре */
-  .explorer a, .explorer span, .explorer div, .explorer .folder-outer a {
-    white-space: normal !important;
-    overflow: visible !important;
-    text-overflow: clip !important;
-    max-width: 100% !important;
-    display: inline-block !important;
-    word-break: break-word !important;
-  }
-  .explorer li {
-    text-overflow: unset !important;
-    white-space: normal !important;
-  }
-  
-  /* 2. Скрытие технических системных блоков */
-  .frontmatter, .yaml-frontmatter, .properties, .content-meta { 
-    display: none !important; 
-  }
-  .explorer .page-title { 
-    text-transform: none !important; 
-    display: block !important; 
-  }
-
-  /* 3. Скрытие копирайта Quartz в подвале */
-  footer p, footer a[href*="quartz"] {
-    display: none !important;
-  }
-
-  /* 4. ЖЕСТКИЙ CSS-ФИКС ДЛЯ БОКОВОГО МЕНЮ */
-  /* Оставляем ТОЛЬКО папки-разделы, полностью скрывая файлы одиночных статей */
-  .explorer li.file, .explorer .folder-container .file, [class*="explorer"] li.file {
-    display: none !important;
-  }
-  
-  /* Принудительный правильный порядок в меню: Vivien -> Concepts -> About */
-  [class*="explorer"] ul, .explorer ul { display: flex !important; flex-direction: column !important; }
-  [class*="explorer"] li:has(a[href="/"]), .explorer li:has(a[href="/"]) { order: 1 !important; }
-  [class*="explorer"] li:has(a[href*="concepts"]), .explorer li:has(a[href*="concepts"]) { order: 2 !important; }
-  [class*="explorer"] li:has(a[href*="about"]), .explorer li:has(a[href*="about"]) { order: 3 !important; }
-
-  /* 5. ТОТАЛЬНОЕ УНИЧТОЖЕНИЕ СПИСКОВ RECENT NOTES И ВРЕМЕНИ ЧТЕНИЯ НА СТРАНИЦАХ ABOUT И CONCEPTS */
-  /* Скрываем заголовки Recent Notes, даты, метаданные, время чтения (2 min read) и списки страниц */
-  .recent-notes, 
-  [class*="recent-notes"], 
-  .page-list, 
-  [class*="page-list"], 
-  .section-summary, 
-  .content-meta,
-  [class*="content-meta"],
-  .read-time,
-  article > h1 + p,
-  article > h1 + ul {
-    display: none !important;
-    opacity: 0 !important;
-    visibility: hidden !hidden !important;
-    height: 0 !important;
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-
-  /* 6. ИСКЛЮЧЕНИЕ ДЛЯ ГЛАВНОЙ СТРАНИЦЫ */
-  /* Возвращаем отображение списка статей ТОЛЬКО на главной странице сайта */
-  body[data-slug="index"] .recent-notes,
-  body[data-slug="index"] [class*="recent-notes"] {
-    display: block !important;
-    opacity: 1 !important;
-    visibility: visible !important;
-    height: auto !important;
-  }
