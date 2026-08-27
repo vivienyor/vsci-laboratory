@@ -35,7 +35,7 @@ jobs:
 
       - name: Build Quartz
         # ХИРУРГИЧЕСКИЙ ФИКС: заставляем Quartz на сервере принудительно очистить кэш перед деплоем
-        run: npx quartz build
+        run: npx quartz build --clean
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
