@@ -12,7 +12,6 @@ configuration:
     - private
     - templates
     - .obsidian
-    # ФИКС 1: Добавляем папку analysis в игнорирование, она СОВСЕМ исчезнет с сайта
     - analysis 
   theme:
     fontOrigin: googleFonts
@@ -25,7 +24,7 @@ configuration:
       lightMode:
         light: "#faf8f8"
         lightgray: "#e5e5e5"
-        gray: "#b8b8b8"
+        gray: "#707070"        # ФИКС: Сделали связи графа контрастными в светлой теме
         darkgray: "#4e4e4e"
         dark: "#2b2b2b"
         secondary: "#284b63"
@@ -40,9 +39,13 @@ configuration:
         tertiary: "#84a59d"
 
 plugins:
-  - source: "@quartz-community/created-modified-date"
-    enabled: true
   - source: "@quartz-community/syntax-highlighting"
+    enabled: true
+  - source: "@quartz-community/obsidian-flavored-markdown"
+    enabled: true
+    options:
+      mermaid: true
+  - source: "@quartz-community/created-modified-date"
     enabled: true
   - source: "@quartz-community/note-properties"
     enabled: true
@@ -50,8 +53,11 @@ plugins:
       hidePropertiesView: true
   - source: "@quartz-community/obsidian-flavored-markdown"
     enabled: true
-  - source: "@quartz-community/github-flavored-markdown"
-    enabled: true
+    options:
+      mermaid: true
+      mermaidTheme: "neutral" # Фикс: заставляет внутренние графы использовать стандартную, контрастную тему вместо кастомной
+
+
   - source: "@quartz-community/crawl-links"
     enabled: true
   - source: "@quartz-community/description"
@@ -97,7 +103,6 @@ plugins:
   - source: "@quartz-community/tag-page"
     enabled: true
     
-  # ФИКС 2: Настройка бокового меню (Включаем жесткий порядок разделов)
   - source: "@quartz-community/explorer"
     enabled: true
     layout:
@@ -161,11 +166,7 @@ plugins:
   - source: "@quartz-community/bases-page"
     enabled: true
     order: 50
-  - source: "@quartz-community/obsidian-plugin-excalidraw"
-    enabled: true
-    order: 50
     
-  # ФИКС ПОДВАЛА: Ссылка теперь ведет четко на ваш профиль ORCID
   - source: "@quartz-community/footer"
     enabled: true
     layout:
@@ -185,12 +186,23 @@ layout:
         beforeBody: []
         left: []
         right: []
-    # 1. ГЛАВНАЯ СТРАНИЦА: Возвращаем стабильную структуру
+    # 1. ГЛАВНАЯ СТРАНИЦА
     index:
       exclude:
         - article-title
       positions:
-        beforeBody: ["breadcrumbs", "recent-notes"] # Ставим обратно сюда для стабильности
+        beforeBody: ["breadcrumbs", "recent-notes"]
+        left: ["page-title", "toolbar", "explorer"]
+        right: ["graph", "backlinks"]
+        footer: ["footer"]
+
+    # ФИКС 3: ИЗОЛИРОВАННЫЙ МАКЕТ ДЛЯ СТРАНИЦЫ SPARKS (Защита от наползания Recent Notes)
+    "index/sparks":
+      exclude:
+        - recent-notes
+        - page-list
+      positions:
+        beforeBody: ["breadcrumbs", "article-title"]
         left: ["page-title", "toolbar", "explorer"]
         right: ["graph", "backlinks"]
         footer: ["footer"]
@@ -227,7 +239,7 @@ layout:
     canvas: {}
     bases: {}
 
-
+# ВСТРАИВАНИЕ КАСТОМНЫХ СТИЛЕЙ
 customStyles: |
   /* 1. Перенос длинных строк в сайдбаре */
   .explorer a, .explorer span, .explorer div, .explorer .folder-outer a {
@@ -258,19 +270,16 @@ customStyles: |
   }
 
   /* 4. ЖЕСТКИЙ CSS-ФИКС ДЛЯ БОКОВОГО МЕНЮ */
-  /* Оставляем ТОЛЬКО папки-разделы, полностью скрывая файлы одиночных статей */
   .explorer li.file, .explorer .folder-container .file, [class*="explorer"] li.file {
     display: none !important;
   }
   
-  /* Принудительный правильный порядок в меню: Vivien -> Concepts -> About */
   [class*="explorer"] ul, .explorer ul { display: flex !important; flex-direction: column !important; }
   [class*="explorer"] li:has(a[href="/"]), .explorer li:has(a[href="/"]) { order: 1 !important; }
   [class*="explorer"] li:has(a[href*="concepts"]), .explorer li:has(a[href*="concepts"]) { order: 2 !important; }
   [class*="explorer"] li:has(a[href*="about"]), .explorer li:has(a[href*="about"]) { order: 3 !important; }
 
-  /* 5. ТОТАЛЬНОЕ УНИЧТОЖЕНИЕ СПИСКОВ RECENT NOTES И ВРЕМЕНИ ЧТЕНИЯ НА СТРАНИЦАХ ABOUT И CONCEPTS */
-  /* Скрываем заголовки Recent Notes, даты, метаданные, время чтения (2 min read) и списки страниц */
+  /* 5. ТОТАЛЬНОЕ УНИЧТОЖЕНИЕ СПИСКОВ RECENT NOTES НА ВСЕХ СТРАНИЦАХ КРОМЕ ГЛАВНОЙ */
   .recent-notes, 
   [class*="recent-notes"], 
   .page-list, 
@@ -283,18 +292,114 @@ customStyles: |
   article > h1 + ul {
     display: none !important;
     opacity: 0 !important;
-    visibility: hidden !hidden !important;
+    visibility: hidden !important;
     height: 0 !important;
     margin: 0 !important;
     padding: 0 !important;
   }
 
+  /* ЖЕСТКИЙ БАН RECENT NOTES КОНКРЕТНО ДЛЯ СТРАНИЦЫ SPARKS ПО ЕЕ СЛУГУ */
+  body[data-slug*="sparks"] .recent-notes,
+  body[data-slug*="sparks"] [class*="recent-notes"],
+  main[data-slug*="sparks"] .recent-notes {
+    display: none !important;
+    height: 0 !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+  }
+
   /* 6. ИСКЛЮЧЕНИЕ ДЛЯ ГЛАВНОЙ СТРАНИЦЫ */
-  /* Возвращаем отображение списка статей ТОЛЬКО на главной странице сайта */
   body[data-slug="index"] .recent-notes,
   body[data-slug="index"] [class*="recent-notes"] {
     display: block !important;
     opacity: 1 !important;
     visibility: visible !important;
     height: auto !important;
+    margin: revert !important;
+    padding: revert !important;
   }
+
+  /* 7. ПРИНУДИТЕЛЬНЫЙ КРИСТАЛЬНЫЙ ФИКС ЛИНИЙ ГРАФА ДЛЯ СВЕТЛОЙ ТЕМЫ */
+  body:not([user-theme="dark"]) .graph-outer svg line,
+  body:not([user-theme="dark"]) .graph-outer svg .edge,
+  body:not([user-theme="dark"]) svg g.links line,
+  body:not([user-theme="dark"]) .graph-outer line {
+    stroke: #505050 !important;
+    stroke-opacity: 0.8 !important;
+    stroke-width: 1.5px !important;
+  }
+  /* ХИРУРГИЧЕСКОЕ УНИЧТОЖЕНИЕ НАПЛЫВА SPARKS ВНУТРИ СПИСКА RECENT NOTES */
+  .recent-notes li:has(a[href*="sparks"]),
+  [class*="recent-notes"] li:has(a[href*="sparks"]),
+  .recent-notes a[href*="sparks"] {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    width: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  /* 8. ПРИНУДИТЕЛЬНАЯ ОТРИСОВКА ВНУТРЕННИХ ГРАФОВ MERMAID В SPA-РЕЖИМЕ */
+  .mermaid, 
+  [class*="mermaid"],
+  .mermaid svg,
+  div.mermaid {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    height: auto !important;
+    min-height: 200px !important; /* Даем блоку минимальную высоту, чтобы он не схлопывался */
+    margin: 20px auto !important;
+    text-align: center !important;
+  }
+
+  /* Исправление контрастности нитей и блоков Mermaid в светлой теме */
+  body:not([user-theme="dark"]) .mermaid svg {
+    filter: none !important;
+  }
+  body:not([user-theme="dark"]) .mermaid .node rect,
+  body:not([user-theme="dark"]) .mermaid .node circle,
+  body:not([user-theme="dark"]) .mermaid .node polygon {
+    fill: #f0f4f8 !important;   /* Светло-серый фон блоков */
+    stroke: #284b63 !important; /* Контрастные границы цвета темы */
+    stroke-width: 2px !important;
+  }
+  body:not([user-theme="dark"]) .mermaid .edgePath .path {
+    stroke: #404040 !important; /* Четкие стрелки и линии связей */
+    stroke-width: 1.5px !important;
+  }
+  body:not([user-theme="dark"]) .mermaid .labelText,
+  body:not([user-theme="dark"]) .mermaid tspan {
+    fill: #2b2b2b !important;   /* Черный читаемый текст внутри блоков */
+    font-weight: 500 !important;
+  }
+  /* 9. Контрастный текст для всех внутренних схем Mermaid */
+  .mermaid text, 
+  .mermaid span, 
+  .mermaid tspan, 
+  .mermaid .node text {
+    fill: #2b2b2b !important;
+    color: #2b2b2b !important;
+    opacity: 1 !important;
+  }
+  .mermaid .edgePath .path, 
+  .mermaid .arrowMarkerPath {
+    stroke: #404040 !important;
+  }
+  
+  /* 10. ФИКС НЕВИДИМОСТИ И СХЛОПЫВАНИЯ СХЕМ MERMAID ПРИ SPA ПЕРЕХОДАХ */
+  .mermaid, 
+  pre.mermaid,
+  div.mermaid,
+  .mermaid svg {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    min-height: 250px !important;
+    height: auto !important;
+    background: var(--light) !important;
+  }
+
+  /* СИСТЕМНЫЙ ТРИГГЕР: ЗАСТАВЛЯЕМ СБОРЩИК ВШИТЬ НАШ ИЗМЕНЕННЫЙ ФАЙЛ УТИЛИТ */
+  @import url("quartz/components/scripts/util.ts");
