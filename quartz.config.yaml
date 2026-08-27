@@ -9,17 +9,10 @@ configuration:
   locale: en-US
   baseUrl: vivienyor.github.io/vsci-laboratory
   ignorePatterns:
-<<<<<<< HEAD
-    - private
-    - templates
-    - .obsidian
-    - analysis 
-=======
     - "private"
     - "templates"
     - ".obsidian"
     - "**/analysis/**"
->>>>>>> e7d7af5a71d6672fbece0e346ebd038d4a22367e
   theme:
     fontOrigin: googleFonts
     cdnCaching: true
@@ -31,7 +24,7 @@ configuration:
       lightMode:
         light: "#faf8f8"
         lightgray: "#e5e5e5"
-        gray: "#707070"        # ФИКС: Сделали связи графа контрастными в светлой теме
+        gray: "#707070"
         darkgray: "#4e4e4e"
         dark: "#2b2b2b"
         secondary: "#284b63"
@@ -46,19 +39,10 @@ configuration:
         tertiary: "#84a59d"
 
 plugins:
-<<<<<<< HEAD
-=======
   - source: "@quartz-community/frontmatter"
     enabled: true
-  - source: "@quartz-community/created-modified-date"
-    enabled: true
->>>>>>> e7d7af5a71d6672fbece0e346ebd038d4a22367e
   - source: "@quartz-community/syntax-highlighting"
     enabled: true
-  - source: "@quartz-community/obsidian-flavored-markdown"
-    enabled: true
-    options:
-      mermaid: true
   - source: "@quartz-community/created-modified-date"
     enabled: true
   - source: "@quartz-community/note-properties"
@@ -69,9 +53,7 @@ plugins:
     enabled: true
     options:
       mermaid: true
-      mermaidTheme: "neutral" # Фикс: заставляет внутренние графы использовать стандартную, контрастную тему вместо кастомной
-
-
+      mermaidTheme: "neutral"
   - source: "@quartz-community/crawl-links"
     enabled: true
   - source: "@quartz-community/description"
@@ -92,7 +74,6 @@ plugins:
     enabled: true
   - source: "@quartz-community/content-index"
     enabled: true
-
   - source: "@quartz-community/recent-notes"
     enabled: true
     options:
@@ -103,7 +84,6 @@ plugins:
       includeFuture: true
     layout:
       position: beforeBody
-
   - source: "@quartz-community/favicon"
     enabled: true
   - source: "@quartz-community/og-image"
@@ -116,7 +96,6 @@ plugins:
     enabled: true
   - source: "@quartz-community/tag-page"
     enabled: true
-    
   - source: "@quartz-community/explorer"
     enabled: true
     layout:
@@ -124,7 +103,6 @@ plugins:
     options:
       title: "Explorer"
       showRoot: false
-
   - source: "@quartz-community/graph"
     enabled: true
     layout:
@@ -172,21 +150,17 @@ plugins:
       condition: not-index
   - source: "@quartz-community/comments"
     enabled: false
-<<<<<<< HEAD
   - source: "@quartz-community/bases-page"
     enabled: true
     order: 50
-    
-=======
-
->>>>>>> e7d7af5a71d6672fbece0e346ebd038d4a22367e
   - source: "@quartz-community/footer"
     enabled: true
     layout:
       position: footer
     options:
       links:
-        "ORCID Profile": "https://orcid.org"
+        "ORCID Profile": "https://orcid.org/0009-0009-7030-8151"
+
 
 layout:
   groups:
@@ -199,30 +173,21 @@ layout:
         beforeBody: []
         left: []
         right: []
-<<<<<<< HEAD
-    # 1. ГЛАВНАЯ СТРАНИЦА
-=======
->>>>>>> e7d7af5a71d6672fbece0e346ebd038d4a22367e
     index:
       exclude:
         - article-title
         - content-meta
       positions:
         beforeBody: ["breadcrumbs", "recent-notes"]
-<<<<<<< HEAD
         left: ["page-title", "toolbar", "explorer"]
         right: ["graph", "backlinks"]
         footer: ["footer"]
-
-    # ФИКС 3: ИЗОЛИРОВАННЫЙ МАКЕТ ДЛЯ СТРАНИЦЫ SPARKS (Защита от наползания Recent Notes)
     "index/sparks":
       exclude:
         - recent-notes
         - page-list
       positions:
         beforeBody: ["breadcrumbs", "article-title"]
-=======
->>>>>>> e7d7af5a71d6672fbece0e346ebd038d4a22367e
         left: ["page-title", "toolbar", "explorer"]
         right: ["graph", "backlinks"]
         footer: ["footer"]
@@ -255,7 +220,6 @@ layout:
         right: []
     canvas: {}
     bases: {}
-<<<<<<< HEAD
 
 # ВСТРАИВАНИЕ КАСТОМНЫХ СТИЛЕЙ
 customStyles: |
@@ -367,7 +331,7 @@ customStyles: |
     opacity: 1 !important;
     visibility: visible !important;
     height: auto !important;
-    min-height: 200px !important; /* Даем блоку минимальную высоту, чтобы он не схлопывался */
+    min-height: 200px !important;
     margin: 20px auto !important;
     text-align: center !important;
   }
@@ -379,20 +343,20 @@ customStyles: |
   body:not([user-theme="dark"]) .mermaid .node rect,
   body:not([user-theme="dark"]) .mermaid .node circle,
   body:not([user-theme="dark"]) .mermaid .node polygon {
-    fill: #f0f4f8 !important;   /* Светло-серый фон блоков */
-    stroke: #284b63 !important; /* Контрастные границы цвета темы */
+    fill: #f0f4f8 !important;
+    stroke: #284b63 !important;
     stroke-width: 2px !important;
   }
   body:not([user-theme="dark"]) .mermaid .edgePath .path {
-    stroke: #404040 !important; /* Четкие стрелки и линии связей */
+    stroke: #404040 !important;
     stroke-width: 1.5px !important;
   }
   body:not([user-theme="dark"]) .mermaid .labelText,
   body:not([user-theme="dark"]) .mermaid tspan {
-    fill: #2b2b2b !important;   /* Черный читаемый текст внутри блоков */
+    fill: #2b2b2b !important;
     font-weight: 500 !important;
   }
-  /* 9. Контрастный текст для всех внутренних схем Mermaid */
+  /* 9. Контрастный text для всех внутренних схем Mermaid */
   .mermaid text, 
   .mermaid span, 
   .mermaid tspan, 
@@ -418,8 +382,3 @@ customStyles: |
     height: auto !important;
     background: var(--light) !important;
   }
-
-  /* СИСТЕМНЫЙ ТРИГГЕР: ЗАСТАВЛЯЕМ СБОРЩИК ВШИТЬ НАШ ИЗМЕНЕННЫЙ ФАЙЛ УТИЛИТ */
-  @import url("quartz/components/scripts/util.ts");
-=======
->>>>>>> e7d7af5a71d6672fbece0e346ebd038d4a22367e
