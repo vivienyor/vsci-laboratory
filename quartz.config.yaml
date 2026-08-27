@@ -3,16 +3,23 @@ configuration:
   pageTitle: Vivien Yor - VSCI Laboratory
   pageTitleSuffix: ""
   enableSPA: true
-  enablePopovers: false # Полностью выключено, чтобы статьи не всплывали при наведении
+  enablePopovers: false
   analytics:
     provider: plausible
   locale: en-US
   baseUrl: vivienyor.github.io/vsci-laboratory
   ignorePatterns:
+<<<<<<< HEAD
     - private
     - templates
     - .obsidian
     - analysis 
+=======
+    - "private"
+    - "templates"
+    - ".obsidian"
+    - "**/analysis/**"
+>>>>>>> e7d7af5a71d6672fbece0e346ebd038d4a22367e
   theme:
     fontOrigin: googleFonts
     cdnCaching: true
@@ -39,6 +46,13 @@ configuration:
         tertiary: "#84a59d"
 
 plugins:
+<<<<<<< HEAD
+=======
+  - source: "@quartz-community/frontmatter"
+    enabled: true
+  - source: "@quartz-community/created-modified-date"
+    enabled: true
+>>>>>>> e7d7af5a71d6672fbece0e346ebd038d4a22367e
   - source: "@quartz-community/syntax-highlighting"
     enabled: true
   - source: "@quartz-community/obsidian-flavored-markdown"
@@ -82,13 +96,13 @@ plugins:
   - source: "@quartz-community/recent-notes"
     enabled: true
     options:
-      limit: 20            # Выводить ровно до 20 статей
-      showTags: false      # Скрываем теги, оставляем только названия
-      showDate: true       # Обязательно выводим дату
-      linkToMore: false    # Убираем лишнюю кнопку перехода
-      includeFuture: true  # Страховка, чтобы статьи не исчезали из-за часовых поясов
+      limit: 20
+      showTags: false
+      showDate: true
+      linkToMore: false
+      includeFuture: true
     layout:
-      position: beforeBody # Выводит список по центру страницы под заголовком
+      position: beforeBody
 
   - source: "@quartz-community/favicon"
     enabled: true
@@ -109,12 +123,7 @@ plugins:
       position: left
     options:
       title: "Explorer"
-      showRoot: false # Скрывает ненужный заголовок "Home"
-      order:
-        - index
-        - sparks
-        - concepts
-        - about
+      showRoot: false
 
   - source: "@quartz-community/graph"
     enabled: true
@@ -163,10 +172,14 @@ plugins:
       condition: not-index
   - source: "@quartz-community/comments"
     enabled: false
+<<<<<<< HEAD
   - source: "@quartz-community/bases-page"
     enabled: true
     order: 50
     
+=======
+
+>>>>>>> e7d7af5a71d6672fbece0e346ebd038d4a22367e
   - source: "@quartz-community/footer"
     enabled: true
     layout:
@@ -186,12 +199,17 @@ layout:
         beforeBody: []
         left: []
         right: []
+<<<<<<< HEAD
     # 1. ГЛАВНАЯ СТРАНИЦА
+=======
+>>>>>>> e7d7af5a71d6672fbece0e346ebd038d4a22367e
     index:
       exclude:
         - article-title
+        - content-meta
       positions:
         beforeBody: ["breadcrumbs", "recent-notes"]
+<<<<<<< HEAD
         left: ["page-title", "toolbar", "explorer"]
         right: ["graph", "backlinks"]
         footer: ["footer"]
@@ -203,11 +221,11 @@ layout:
         - page-list
       positions:
         beforeBody: ["breadcrumbs", "article-title"]
+=======
+>>>>>>> e7d7af5a71d6672fbece0e346ebd038d4a22367e
         left: ["page-title", "toolbar", "explorer"]
         right: ["graph", "backlinks"]
         footer: ["footer"]
-
-    # 2. СТРАНИЦЫ ABOUT И CONCEPTS
     content:
       exclude:
         - recent-notes
@@ -217,7 +235,6 @@ layout:
         left: ["page-title", "toolbar", "explorer"]
         right: ["graph", "backlinks"]
         footer: ["footer"]
-    # 3. Страницы папок-разделов
     folder:
       exclude:
         - reader-mode
@@ -238,6 +255,7 @@ layout:
         right: []
     canvas: {}
     bases: {}
+<<<<<<< HEAD
 
 # ВСТРАИВАНИЕ КАСТОМНЫХ СТИЛЕЙ
 customStyles: |
@@ -403,3 +421,5 @@ customStyles: |
 
   /* СИСТЕМНЫЙ ТРИГГЕР: ЗАСТАВЛЯЕМ СБОРЩИК ВШИТЬ НАШ ИЗМЕНЕННЫЙ ФАЙЛ УТИЛИТ */
   @import url("quartz/components/scripts/util.ts");
+=======
+>>>>>>> e7d7af5a71d6672fbece0e346ebd038d4a22367e
