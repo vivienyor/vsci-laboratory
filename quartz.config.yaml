@@ -7,7 +7,7 @@ configuration:
   analytics:
     provider: plausible
   locale: en-US
-  baseUrl: "vivienyor.github.io/vsci-laboratory"
+  baseUrl: "https://vivienyor.github.io/vsci-laboratory"
   ignorePatterns:
     - "private"
     - "templates"
